@@ -1,46 +1,62 @@
-# Data Folder
+# Data
 
-## Raw Datasets
+## Dataset: GoEmotions
 
-This project uses three datasets. Due to file size limitations, raw files are not uploaded to GitHub. Please download them manually and place them inside `data/raw/`.
+This project uses the **GoEmotions** dataset by Google Research.
 
----
+- **Source:** https://github.com/google-research/google-research/tree/master/goemotions
+- **HuggingFace:** https://huggingface.co/datasets/google-research-datasets/go_emotions
+- **Paper:** https://arxiv.org/abs/2005.00547
 
-### Dataset 1 — Davidson Hate Speech & Offensive Language (2017)
-- **Paper:** Davidson, T., Warmsley, D., Macy, M., & Weber, I. (2017). Automated Hate Speech Detection and the Problem of Offensive Language. ICWSM 2017.
-- **DOI:** https://doi.org/10.1609/icwsm.v11i1.14955
-- **Download:** https://github.com/t-davidson/hate-speech-and-offensive-language
-- **File name:** `labeled_data.csv`
-- **Place at:** `data/raw/labeled_data.csv`
+## Download Instructions
 
----
+The raw and processed dataset files are not included in this repository due to file size. To reproduce the data:
 
-### Dataset 2 — Call Me Sexist But / CMSB (2021)
-- **Paper:** Samory, M., Sen, I., Kohne, J., Flöck, F., & Wagner, C. (2021). "Call me sexist, but…": Revisiting Sexism Detection Using Psychological Scales and Adversarial Samples. ICWSM 2021.
-- **DOI:** https://doi.org/10.1609/icwsm.v15i1.18085
-- **Download:** https://doi.org/10.7802/2251 (GESIS Data Archive)
-- **File name:** `sexism_data.csv`
-- **Place at:** `data/raw/sexism_data.csv`
+1. Run `scripts/01_load_data.py` — this will automatically download the dataset from HuggingFace and save it to `data/raw/go_emotions_raw.csv`
+2. Run `scripts/02_preprocess_data.py` — this will clean the data and save it to `data/processed/combined_dataset.csv`
 
----
+## Folder Structure
+# Data
 
-### Dataset 3 — MMHS150K (2020)
-- **Paper:** Gomez, R., Gibert, J., Gomez, L., & Karatzas, D. (2020). Exploring Hate Speech Detection in Multimodal Publications. IEEE/CVF WACV 2020.
-- **arXiv:** https://arxiv.org/abs/1910.03814
-- **Download:** https://drive.google.com/file/d/1S9mMhZFkntNnYdO-1dZXwF_8XIiFcmlF/view
-- **File name:** `MMHS150K_GT.json`
-- **Place at:** `data/raw/MMHS150K_GT.json`
+## Dataset: GoEmotions
 
----
+This project uses the **GoEmotions** dataset by Google Research.
 
-## Processed Dataset
+- **Source:** https://github.com/google-research/google-research/tree/master/goemotions
+- **HuggingFace:** https://huggingface.co/datasets/google-research-datasets/go_emotions
+- **Paper:** https://arxiv.org/abs/2005.00547
 
-After running `scripts/02_preprocess_data.py`, the cleaned and merged dataset will be saved at:
+## Download Instructions
 
-`data/processed/combined_dataset.csv`
+The raw and processed dataset files are not included in this repository due to file size. To reproduce the data:
 
-This file contains **61,945 tweets** with the following columns:
-- `tweet_text` — cleaned tweet text
-- `label` — one of: Racist, Sexist, Offensive Language, Other Hate, Religion, Not Hate
-- `tweet_length` — number of characters
-- `word_count` — number of words
+1. Run `scripts/01_load_data.py` — this will automatically download the dataset from HuggingFace and save it to `data/raw/go_emotions_raw.csv`
+2. Run `scripts/02_preprocess_data.py` — this will clean the data and save it to `data/processed/combined_dataset.csv`
+
+## Folder Structure
+## Label System
+
+We collapse GoEmotions' 27 emotion categories into 7 classes using **Parrot's emotion framework** (W. Gerrod Parrott, 2001):
+
+| Parrot Class | GoEmotions Labels |
+|---|---|
+| Joy | joy, amusement, excitement, optimism, pride, relief, gratitude, approval |
+| Love | love, admiration, caring, desire |
+| Surprise | surprise, realization, confusion, curiosity |
+| Anger | anger, annoyance, disapproval, disgust, embarrassment |
+| Sadness | sadness, disappointment, grief, remorse |
+| Fear | fear, nervousness |
+| Neutral | neutral |
+
+## Class Distribution
+
+| Emotion | Count |
+|---|---|
+| Joy | 29,222 |
+| Surprise | 8,272 |
+| Anger | 7,663 |
+| Love | 6,552 |
+| Neutral | 4,268 |
+| Sadness | 1,660 |
+| Fear | 371 |
+| **Total** | **58,008** |
