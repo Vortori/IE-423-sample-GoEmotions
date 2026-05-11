@@ -19,7 +19,7 @@ After preprocessing, the final dataset contains **58,008 Reddit comments** acros
 To build a machine learning classifier that detects and categorizes emotions in Reddit comments into the following classes based on Parrot's emotion framework: Joy, Love, Surprise, Anger, Sadness, Fear, and Neutral.
 
 ## Repository Structure
-
+```
 |
 ├── README.md
 ├── requirements.txt
@@ -42,7 +42,7 @@ To build a machine learning classifier that detects and categorizes emotions in 
 |
 └── docs/
 └── ResearchProposalPreprocessing.md
-
+```
 ## Installation
 ```bash
 pip install -r requirements.txt
